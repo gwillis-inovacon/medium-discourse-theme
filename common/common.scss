@@ -730,6 +730,14 @@ tr.topic-list-item a.title {
   }
 }
 
+// Pull Latest section up to align with table headers
+.categories-and-latest > section,
+.categories-and-latest > div:not(.category-list),
+.categories-and-top > section,
+.categories-and-top > div:not(.category-list) {
+  margin-top: -8px !important;
+}
+
 // Target the Latest header text specifically
 .categories-and-latest .latest-topic-list h3,
 .categories-and-latest section > h3,
