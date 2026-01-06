@@ -62,6 +62,20 @@ export default apiInitializer("0.11.1", (api) => {
           mainLink.insertBefore(authorLine, mainLink.firstChild);
         }
       }
+
+      // Fix metadata: move activity/time into the stats line
+      const linkBottomLine = item.querySelector('.link-bottom-line');
+      const activityElement = item.querySelector('.topic-item-stats__activity, [class*="activity"], .relative-date');
+
+      if (linkBottomLine && activityElement && !linkBottomLine.contains(activityElement)) {
+        // Activity is outside link-bottom-line, move it in
+        const activityClone = activityElement.cloneNode(true);
+        activityClone.style.display = 'inline-flex';
+        activityClone.style.alignItems = 'center';
+        activityClone.style.gap = '4px';
+        linkBottomLine.appendChild(activityClone);
+        activityElement.style.display = 'none';
+      }
     });
   });
 });
