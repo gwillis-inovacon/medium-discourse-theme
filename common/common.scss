@@ -721,8 +721,20 @@ tr.topic-list-item a.title {
   flex-wrap: wrap;
   gap: $space-md;
   padding: $space-md 0;
-  border-bottom: 1px solid var(--primary-low);
+  border: none;
   margin-bottom: $space-xl;
+}
+
+// Remove borders from post header/author area
+.topic-post .row,
+.topic-post .topic-body,
+.topic-avatar,
+.topic-meta-data,
+.names,
+.post-infos {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
 .topic-avatar img.avatar {
