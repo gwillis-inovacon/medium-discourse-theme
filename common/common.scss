@@ -239,15 +239,17 @@ pre {
 .topic-list-item {
   display: block !important;
   position: relative;
-  background: var(--secondary);
+  background: var(--secondary) !important;
   padding: $space-md 0;
   padding-right: 130px; // Reserve space for thumbnail
   border-bottom: 1px solid var(--primary-low);
   min-height: 112px;
   cursor: pointer;
+  transition: border-color $transition-fast;
 
   &:hover {
-    background: var(--secondary); // No color change on hover
+    background: var(--secondary) !important;
+    border-bottom-color: var(--tertiary);
   }
 
   // Reset all table cells
