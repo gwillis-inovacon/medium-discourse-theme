@@ -343,19 +343,45 @@ tr.topic-list-item img.avatar,
   z-index: 100;
 }
 
+// Author line - "Username in Category" positioned next to avatar
+.topic-list-item .medium-author-line {
+  position: absolute !important;
+  top: 26px !important;
+  left: 44px !important;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--primary);
+  z-index: 100;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.topic-list-item .medium-author-name {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.topic-list-item .medium-in-separator {
+  color: var(--primary-medium);
+  margin: 0 4px;
+}
+
+.topic-list-item .medium-category-name {
+  color: var(--primary);
+  font-weight: 400;
+}
+
 // Hide ALL avatars except one - cleaner approach
 .topic-list-item img.avatar:not(:first-of-type) {
   display: none !important;
 }
 
-// Category - position at top, next to avatar
+// Category - will be positioned dynamically after author name via JS
+// Keep it relatively positioned so it flows after the author name
 .topic-list-item .badge-wrapper {
-  position: absolute !important;
-  top: 24px !important;
-  left: 44px !important;
-  z-index: 100;
-  display: inline-flex !important;
-  align-items: center;
+  display: none !important; // Hide default, we'll show category differently
 }
 
 // Push main content down for avatar/category row
