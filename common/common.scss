@@ -226,14 +226,9 @@ pre {
 .topic-list {
   border: none;
   width: 100%;
+  border-collapse: collapse;
 
   thead { display: none; }
-
-  tbody {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
 
   &, thead, tbody, tr, th, td {
     border: none;
@@ -241,114 +236,125 @@ pre {
   }
 }
 
-// Individual topic card - Medium style
+// Individual topic row - Medium card style
 .topic-list-item {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid !important;
+  grid-template-columns: 1fr 130px;
+  grid-template-rows: auto;
+  gap: $space-md;
+  align-items: start;
   background: var(--secondary);
-  padding: $space-lg 0;
+  padding: $space-xl 0;
   border-bottom: 1px solid var(--primary-low);
-  transition: none;
-  border-radius: 0;
-  box-shadow: none;
 
   &:hover {
-    box-shadow: none;
-    transform: none;
+    background: var(--secondary);
   }
 
-  // Hide default table cells
-  td {
-    display: none;
+  // Reset all table cells
+  > td {
+    display: none !important;
     padding: 0;
     border: none;
+    background: none;
   }
 
-  // Show only main-link cell
-  td.main-link {
-    display: block;
-    flex: 1;
-    min-width: 0;
-    padding-right: $space-lg;
+  // Main content area - left column
+  > td.main-link {
+    display: block !important;
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
   }
 
-  // Show posters cell for author info
-  td.posters {
-    display: block;
-    order: -1;
-    width: 100%;
-    margin-bottom: $space-sm;
+  // Thumbnail - right column
+  > td.topic-thumbnail {
+    display: block !important;
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0 !important;
+    width: auto !important;
   }
 
-  // Show activity/stats
-  td.num {
-    display: none;
+  // Posters (avatars) - show inline with metadata
+  > td.posters {
+    display: none !important;
   }
 }
 
-// Author row at top (avatar + name + category)
-.topic-list-item td.posters {
+// When no thumbnail, let content span full width
+.topic-list-item:not(:has(td.topic-thumbnail img)) {
+  grid-template-columns: 1fr;
+}
+
+// Main link content structure
+.topic-list-item td.main-link {
+  display: flex !important;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+// Author/category line at top
+.topic-list-item .link-top-line {
   display: flex;
   align-items: center;
   gap: $space-sm;
-
-  a:first-child {
-    display: flex;
-    align-items: center;
-    gap: $space-sm;
-
-    img.avatar {
-      width: 20px;
-      height: 20px;
-      border-radius: $radius-full;
-    }
-  }
-
-  // Hide extra avatars
-  a:not(:first-child) {
-    display: none;
-  }
+  margin-bottom: $space-xs;
+  order: 1;
 }
 
-// Author name display
-.topic-list-item .posters .avatar-flair,
-.topic-list-item .posters .poster-name {
+// Category badge - subtle inline style
+.topic-list-item .badge-category-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.topic-list-item .badge-category-bg,
+.topic-list-item .badge-category-parent-bg {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 2px;
+}
+
+.topic-list-item .badge-category {
   font-size: $font-size-sm;
-  color: var(--primary);
   font-weight: 400;
+  color: var(--primary);
+  padding: 0;
+  background: none;
 }
 
 // Topic title - large serif
 .topic-list-item .title,
-.topic-list .link-top-line a.title,
+.topic-list-item .link-top-line a.title,
+.topic-list-item a.title,
 .topic-list-item .raw-topic-link {
   font-family: $font-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.3;
   color: var(--primary);
   display: block;
-  margin-bottom: $space-sm;
+  order: 2;
 
   &:hover { color: var(--primary); }
 }
 
 // Topic excerpt
-.topic-excerpt {
+.topic-list-item .topic-excerpt {
   font-family: $font-serif;
-  font-size: $font-size-base;
-  line-height: 1.6;
-  color: var(--primary-medium);
-  margin-top: 0;
-  margin-bottom: $space-md;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--primary-high);
+  margin: $space-xs 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  order: 3;
 }
 
-// Metadata row (date, likes, replies, actions)
+// Bottom metadata row
 .topic-list-item .link-bottom-line {
   display: flex;
   align-items: center;
@@ -356,123 +362,65 @@ pre {
   margin-top: $space-sm;
   font-size: $font-size-sm;
   color: var(--primary-medium);
+  order: 4;
 }
 
-// Category badge - subtle
-.badge-category-wrapper {
-  order: -1;
+// Stats inline
+.topic-list-item .topic-item-stats {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
 }
 
-.badge-category {
-  font-size: $font-size-xs;
-  font-weight: 400;
-  color: var(--primary-medium);
-  padding: 0;
-  background: none;
-
-  &::before {
-    content: "in ";
-  }
-}
-
-.badge-category-bg {
-  display: none;
-}
-
-.badge-category-parent-bg {
-  display: none;
-}
-
-// Topic thumbnail - right side (Medium style ~112x112)
-.topic-list-item .topic-thumbnail,
-.topic-list-item .thumbnail,
-.topic-list-item .topic-thumbnail-container,
-.topic-list .topic-thumbnail,
-.topic-thumbnail {
-  width: 112px !important;
-  min-width: 112px !important;
-  max-width: 112px !important;
-  height: 112px !important;
-  min-height: 112px !important;
-  max-height: 112px !important;
-  flex-shrink: 0;
-  border-radius: $radius-sm;
-  overflow: hidden;
-  order: 10;
-  margin-left: auto;
-
-  img {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 112px !important;
-    max-height: 112px !important;
-    object-fit: cover;
-  }
-
-  a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-// Topic List Thumbnails component overrides
-.topic-list-item td.topic-thumbnail {
-  width: 112px !important;
-  padding: 0 !important;
-  vertical-align: top;
-}
-
-.thumbnail-container,
-.topic-thumbnail-container {
-  width: 112px !important;
-  height: 112px !important;
-}
-
-// Hide thumbnail placeholder when no image
-.topic-thumbnail.no-thumbnail,
-.topic-thumbnail:empty {
-  display: none;
-}
-
-// Stats in metadata row
-.topic-list-item .num.posts,
-.topic-list-item .num.views {
+.topic-list-item .topic-item-stats__likes,
+.topic-list-item .topic-item-stats__replies,
+.topic-list-item .topic-item-stats__views {
   display: inline-flex;
   align-items: center;
-  gap: $space-xs;
+  gap: 4px;
   font-size: $font-size-sm;
   color: var(--primary-medium);
 
   .d-icon {
     font-size: 14px;
+    opacity: 0.7;
   }
 }
 
-// Topic list actions (like Medium's hide/bookmark/more)
-.topic-list-item .topic-actions {
-  display: flex;
-  align-items: center;
-  gap: $space-sm;
-  margin-left: auto;
-
-  .btn {
-    padding: $space-xs;
-    background: none;
-    border: none;
-    color: var(--primary-medium);
-
-    &:hover {
-      color: var(--primary);
-      background: var(--primary-very-low);
-    }
-  }
-}
-
-// Activity time
-.topic-list-item .relative-date {
+// Activity/date
+.topic-list-item .relative-date,
+.topic-list-item .topic-item-stats__activity {
   font-size: $font-size-sm;
   color: var(--primary-medium);
+}
+
+// Topic thumbnail - right side
+.topic-list-item td.topic-thumbnail,
+.topic-list-item .topic-thumbnail {
+  width: 112px !important;
+  height: 112px !important;
+  min-width: 112px;
+  max-width: 112px;
+  border-radius: $radius-sm;
+  overflow: hidden;
+
+  img {
+    width: 112px !important;
+    height: 112px !important;
+    object-fit: cover;
+    border-radius: $radius-sm;
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+}
+
+// Hide empty thumbnail cells
+.topic-list-item td.topic-thumbnail:empty,
+.topic-list-item td.topic-thumbnail:not(:has(img)) {
+  display: none !important;
 }
 
 // Featured/pinned star
@@ -481,20 +429,21 @@ pre {
 }
 
 // Unread/new indicators
-.topic-list-item.unread .title,
-.topic-list-item.new .title {
-  font-weight: 800;
+.topic-list-item.visited .title {
+  color: var(--primary-medium);
 }
 
-// Latest topic list (different layout)
-.latest-topic-list-item {
-  padding: $space-lg 0;
-  border-bottom: 1px solid var(--primary-low);
+.topic-list-item:not(.visited) .title {
+  font-weight: 700;
+}
 
-  .main-link {
-    display: flex;
-    flex-direction: column;
-  }
+// Latest topic list
+.latest-topic-list-item {
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  gap: $space-md;
+  padding: $space-xl 0;
+  border-bottom: 1px solid var(--primary-low);
 }
 
 // Categories page
