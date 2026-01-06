@@ -64,17 +64,20 @@ export default apiInitializer("0.11.1", (api) => {
       }
 
       // Fix metadata: move activity/time into the stats line
+      // The time element is an <a> containing .relative-date
       const linkBottomLine = item.querySelector('.link-bottom-line');
-      const activityElement = item.querySelector('.topic-item-stats__activity, [class*="activity"], .relative-date');
+      const relativeDate = item.querySelector('.relative-date');
+      const timeLink = relativeDate ? relativeDate.closest('a') : null;
 
-      if (linkBottomLine && activityElement && !linkBottomLine.contains(activityElement)) {
-        // Activity is outside link-bottom-line, move it in
-        const activityClone = activityElement.cloneNode(true);
-        activityClone.style.display = 'inline-flex';
-        activityClone.style.alignItems = 'center';
-        activityClone.style.gap = '4px';
-        linkBottomLine.appendChild(activityClone);
-        activityElement.style.display = 'none';
+      if (linkBottomLine && timeLink && !linkBottomLine.contains(timeLink)) {
+        // Time link is outside link-bottom-line, move it in
+        const timeClone = timeLink.cloneNode(true);
+        timeClone.style.display = 'inline-flex';
+        timeClone.style.alignItems = 'center';
+        timeClone.style.gap = '4px';
+        timeClone.classList.add('medium-time-inline');
+        linkBottomLine.appendChild(timeClone);
+        timeLink.style.display = 'none';
       }
     });
   });
