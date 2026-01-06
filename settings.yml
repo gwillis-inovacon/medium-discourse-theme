@@ -1,17 +1,12 @@
-medium_accent_color:
-  type: color
-  default: "#1a8917"
-  description: "Primary accent color (Medium green by default)"
-
 medium_use_serif_fonts:
   type: bool
   default: true
   description: "Use serif fonts for content (Georgia/Charter)"
 
 medium_content_max_width:
-  type: string
-  default: "680px"
-  description: "Maximum width for content area"
+  type: integer
+  default: 680
+  description: "Maximum width for content area in pixels"
 
 medium_show_topic_thumbnails:
   type: bool
