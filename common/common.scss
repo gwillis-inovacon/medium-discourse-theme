@@ -774,14 +774,27 @@ tr.topic-list-item a.title {
   }
 }
 
-// Header alignment
+// Header alignment - all table headers on same line
+.categories-and-latest th,
+.categories-and-top th,
 .category-list th,
-.latest-topic-list th,
 th.category,
 th.topics,
 th.latest {
   vertical-align: top !important;
   padding-top: 0 !important;
+  padding-bottom: $space-sm !important;
+  font-size: $font-size-sm;
+  font-weight: 400;
+  color: var(--primary-medium);
+}
+
+// Remove extra padding/margin from Latest header
+.latest-topic-list-header,
+th.latest,
+.category-list-latest-topic-header {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 // ===================
