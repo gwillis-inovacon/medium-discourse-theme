@@ -730,24 +730,15 @@ tr.topic-list-item a.title {
   }
 }
 
-// Pull Latest section up to align with table headers
-.categories-and-latest > section,
-.categories-and-latest > div:not(.category-list),
-.categories-and-top > section,
-.categories-and-top > div:not(.category-list) {
-  margin-top: -8px !important;
-}
-
-// Target the Latest header text specifically
-.categories-and-latest .latest-topic-list h3,
-.categories-and-latest section > h3,
-.categories-and-latest .category-list + * h3,
-.latest-topic-list-header {
+// Align the Latest .table-heading with Category/Topics table headers
+.categories-and-latest .table-heading,
+.categories-and-top .table-heading {
   margin: 0 0 $space-sm 0 !important;
   padding: 0 !important;
   font-size: $font-size-sm;
   font-weight: 400;
   color: var(--primary-medium);
+  line-height: 1 !important;
 }
 
 // Categories page - Latest topics styling
