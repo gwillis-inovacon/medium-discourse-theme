@@ -704,6 +704,10 @@ tr.topic-list-item a.title {
   > table.category-list {
     flex: 1;
     margin-top: 0 !important;
+
+    thead th {
+      padding-top: 0 !important;
+    }
   }
 
   // Right column - latest section
@@ -712,12 +716,30 @@ tr.topic-list-item a.title {
   > div:last-child {
     margin-top: 0 !important;
     padding-top: 0 !important;
+
+    // The h3 or header element
+    h3, .header, > div:first-child {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
   }
 
   // Table structure alignment
   td, th {
     vertical-align: top !important;
   }
+}
+
+// Target the Latest header text specifically
+.categories-and-latest .latest-topic-list h3,
+.categories-and-latest section > h3,
+.categories-and-latest .category-list + * h3,
+.latest-topic-list-header {
+  margin: 0 0 $space-sm 0 !important;
+  padding: 0 !important;
+  font-size: $font-size-sm;
+  font-weight: 400;
+  color: var(--primary-medium);
 }
 
 // Categories page - Latest topics styling
