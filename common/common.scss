@@ -368,12 +368,11 @@ tr.topic-list-item img.avatar,
 }
 
 // Category badge - position in the author line after "Username in"
-// Try multiple selectors to catch the category
-.topic-list-item .badge-wrapper,
-.topic-list-item .badge-category-wrapper,
-.topic-list-item .badge-wrapper.bullet,
-.topic-list-item .badge-wrapper.box,
-tr.topic-list-item .badge-wrapper {
+// Target the category and its parent container
+.topic-list-item .badge-category__name,
+.topic-list-item .badge-category__wrapper,
+.topic-list-item .badge-category,
+.topic-list-item [class*="badge-category"] {
   position: absolute !important;
   top: 24px !important;
   left: 140px !important;
@@ -381,6 +380,17 @@ tr.topic-list-item .badge-wrapper {
   display: inline-flex !important;
   align-items: center;
   font-size: 14px;
+  font-weight: 400;
+  color: var(--primary);
+}
+
+// The icon next to category - position it too
+.topic-list-item .badge-category__icon,
+.topic-list-item [class*="badge-category__icon"] {
+  position: absolute !important;
+  top: 24px !important;
+  left: 125px !important;
+  z-index: 100;
 }
 
 // Push main content down for avatar/category row
