@@ -777,6 +777,10 @@ tr.topic-list-item a.title {
   color: white;
   border-color: var(--tertiary);
 
+  .d-icon {
+    color: white !important;
+  }
+
   &:hover {
     background: $medium-green-hover;
     border-color: $medium-green-hover;
