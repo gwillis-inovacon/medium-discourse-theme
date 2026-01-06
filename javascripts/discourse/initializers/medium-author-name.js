@@ -63,20 +63,20 @@ export default apiInitializer("0.11.1", (api) => {
         }
       }
 
-      // Fix metadata: move activity/time into the stats line
-      // The time element is an <a> containing .relative-date
-      const linkBottomLine = item.querySelector('.link-bottom-line');
+      // Fix metadata: move activity/time to same line as stats
+      // Find the stats container (contains views/replies icons)
+      const statsContainer = item.querySelector('.topic-item-stats, [class*="topic-item-stats"]');
       const relativeDate = item.querySelector('.relative-date');
       const timeLink = relativeDate ? relativeDate.closest('a') : null;
 
-      if (linkBottomLine && timeLink && !linkBottomLine.contains(timeLink)) {
-        // Time link is outside link-bottom-line, move it in
+      if (statsContainer && timeLink && !statsContainer.contains(timeLink)) {
+        // Time link is outside stats, move it in
         const timeClone = timeLink.cloneNode(true);
         timeClone.style.display = 'inline-flex';
         timeClone.style.alignItems = 'center';
         timeClone.style.gap = '4px';
         timeClone.classList.add('medium-time-inline');
-        linkBottomLine.appendChild(timeClone);
+        statsContainer.appendChild(timeClone);
         timeLink.style.display = 'none';
       }
     });
