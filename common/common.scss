@@ -479,43 +479,36 @@ tr.topic-list-item a.title {
   overflow: hidden;
 }
 
-// Bottom metadata row - force single line with proper spacing
-.topic-list-item .link-bottom-line,
-.topic-list-item .topic-item-stats-wrapper,
-.topic-list-item [class*="stats"] {
-  display: inline-flex !important;
+// Bottom metadata row - force EVERYTHING on single line
+.topic-list-item .link-bottom-line {
+  display: flex !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
   flex-direction: row !important;
-  gap: 12px !important;
+  gap: 8px !important;
   font-size: $font-size-sm;
   color: var(--primary-medium);
   margin-top: 4px;
 
-  // Force ALL children inline on same row
-  > *,
-  > span,
-  > div,
-  > a {
-    display: inline-flex !important;
-    align-items: center;
-    flex-shrink: 0;
-    white-space: nowrap;
-    gap: 4px;
-    line-height: 1;
+  // Force ALL descendants inline
+  * {
+    display: inline !important;
+    float: none !important;
   }
 
-  // Ensure icons align with text
+  // But flex containers should be inline-flex
+  .topic-item-stats,
+  .topic-item-stats-wrapper,
+  [class*="stats"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
   .d-icon {
+    display: inline !important;
     vertical-align: middle;
   }
-}
-
-// Force the activity/time to stay inline with stats
-.topic-list-item .topic-item-stats {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 12px !important;
 }
 
 // Individual stat items need spacing
