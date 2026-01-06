@@ -81,8 +81,10 @@ $shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
 // Hover effects (desktop only)
 @media (hover: hover) {
   .topic-list-item:hover {
-    box-shadow: $shadow-card-hover;
-    transform: translateY(-2px);
+    background: var(--secondary) !important;
+    border-bottom-color: var(--tertiary) !important;
+    box-shadow: none;
+    transform: none;
   }
 
   .btn:hover {

@@ -242,16 +242,31 @@ pre {
   background: var(--secondary) !important;
   padding: $space-md 0;
   padding-right: 130px; // Reserve space for thumbnail
-  border-bottom: 1px solid var(--primary-low);
+  border-bottom: 2px solid var(--primary-low);
   min-height: 112px;
   cursor: pointer;
   transition: border-color $transition-fast;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     background: var(--secondary) !important;
-    border-bottom-color: var(--tertiary);
+    background-color: var(--secondary) !important;
+    border-bottom-color: var(--tertiary) !important;
+    box-shadow: none !important;
+    transform: none !important;
   }
+}
 
+// Override any other hover styles
+tr.topic-list-item:hover,
+.topic-list .topic-list-item:hover {
+  background: var(--secondary) !important;
+  background-color: var(--secondary) !important;
+  border-bottom-color: var(--tertiary) !important;
+}
+
+.topic-list-item {
   // Reset all table cells
   > td {
     display: none;
