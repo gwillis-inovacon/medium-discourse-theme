@@ -694,25 +694,27 @@ tr.topic-list-item a.title {
   align-items: flex-start !important;
   gap: $space-xl;
 
-  // Left column - categories
-  .category-list {
-    flex: 1;
+  // All direct children align to top with no extra margin
+  > * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
-  // Right column - latest
-  .latest-topic-list-container,
-  section.latest-topic-list {
-    padding-top: 0 !important;
+  // Left column - categories table
+  > table.category-list {
+    flex: 1;
     margin-top: 0 !important;
   }
 
-  // Table structure alignment
-  > table,
-  > .category-list,
-  > section {
-    vertical-align: top !important;
+  // Right column - latest section
+  > section,
+  > .latest-topic-list,
+  > div:last-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
+  // Table structure alignment
   td, th {
     vertical-align: top !important;
   }
