@@ -240,7 +240,7 @@ pre {
   display: block !important;
   position: relative;
   background: var(--secondary);
-  padding: $space-xl 0;
+  padding: $space-lg 0;
   padding-right: 130px; // Reserve space for thumbnail
   border-bottom: 1px solid var(--primary-low);
   min-height: 112px;
@@ -343,23 +343,48 @@ tr.topic-list-item img.avatar,
   z-index: 100;
 }
 
-// Author name - positioned next to avatar
-.topic-list-item .medium-author-name {
+// Author line - container for "Avatar Username in Category"
+.topic-list-item .medium-author-line {
   position: absolute !important;
   top: 26px !important;
   left: 44px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 0;
   font-size: 14px;
-  font-weight: 500;
-  color: var(--primary);
   z-index: 100;
   white-space: nowrap;
+}
 
-  // Add "in" separator after username
-  &::after {
-    content: " in ";
-    color: var(--primary-medium);
-    font-weight: 400;
-  }
+.topic-list-item .medium-author-name {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.topic-list-item .medium-in-separator {
+  color: var(--primary-medium);
+}
+
+.topic-list-item .medium-category-name,
+.topic-list-item .medium-category-inline {
+  color: var(--primary);
+  font-weight: 400;
+}
+
+// Style the cloned category badge inline
+.topic-list-item .medium-category-inline,
+.medium-author-line .medium-category-inline,
+.medium-author-line .badge-wrapper,
+.medium-author-line [class*="badge"] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  position: static !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 // Hide ALL avatars except one - cleaner approach
@@ -367,30 +392,11 @@ tr.topic-list-item img.avatar,
   display: none !important;
 }
 
-// Category badge - position in the author line after "Username in"
-// Target the category and its parent container
-.topic-list-item .badge-category__name,
-.topic-list-item .badge-category__wrapper,
-.topic-list-item .badge-category,
-.topic-list-item [class*="badge-category"] {
-  position: absolute !important;
-  top: 24px !important;
-  left: 140px !important;
-  z-index: 100;
-  display: inline-flex !important;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--primary);
-}
-
-// The icon next to category - position it too
-.topic-list-item .badge-category__icon,
-.topic-list-item [class*="badge-category__icon"] {
-  position: absolute !important;
-  top: 24px !important;
-  left: 125px !important;
-  z-index: 100;
+// Original category badge - hide it (we clone it into author line via JS)
+// But don't hide the one we cloned into the author line
+.topic-list-item .link-top-line [class*="badge-category"],
+.topic-list-item td.main-link > [class*="badge"] {
+  // Let JS handle hiding via inline style
 }
 
 // Push main content down for avatar/category row
