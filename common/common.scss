@@ -483,7 +483,7 @@ tr.topic-list-item a.title {
 .topic-list-item .link-bottom-line,
 .topic-list-item .topic-item-stats-wrapper,
 .topic-list-item [class*="stats"] {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
   flex-direction: row !important;
@@ -509,6 +509,13 @@ tr.topic-list-item a.title {
   .d-icon {
     vertical-align: middle;
   }
+}
+
+// Force the activity/time to stay inline with stats
+.topic-list-item .topic-item-stats {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
 }
 
 // Individual stat items need spacing
@@ -572,18 +579,23 @@ tr.topic-list-item a.title {
   color: var(--primary-low-mid);
 }
 
-// Activity/date
+// Activity/date - must stay inline
 .topic-list-item .relative-date,
 .topic-list-item .topic-item-stats__activity,
 .topic-list-item .activity {
+  display: inline-flex !important;
+  align-items: center !important;
   font-size: $font-size-sm;
   color: var(--primary-medium);
   white-space: nowrap;
+  gap: 4px;
 }
 
 // Hide line breaks in metadata
-.topic-list-item .link-bottom-line br {
-  display: none;
+.topic-list-item .link-bottom-line br,
+.topic-list-item .topic-item-stats br,
+.topic-list-item [class*="stats"] br {
+  display: none !important;
 }
 
 // Topic thumbnail - right side
