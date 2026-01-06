@@ -720,7 +720,9 @@ tr.topic-list-item a.title {
 
 // Categories page - Latest topics styling
 .latest-topic-list-item {
-  display: block;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: flex-start;
   padding: $space-sm $space-md;
   margin-bottom: $space-xs;
   border: 1px solid var(--primary-low);
@@ -761,17 +763,37 @@ tr.topic-list-item a.title {
     font-size: $font-size-xs;
   }
 
-  // Metadata - ensure it shows
-  .topic-item-stats,
-  .num,
-  .age,
-  .post-activity {
+  // Metadata container - make it inline
+  .topic-item-stats {
     display: inline-flex !important;
     align-items: center;
-    gap: $space-xs;
+    gap: $space-sm;
+    font-size: $font-size-xs;
+    color: var(--primary-medium);
+    margin-left: auto;
+  }
+
+  // Individual metadata items inline
+  .num,
+  .age,
+  .post-activity,
+  .posts,
+  .likes,
+  .relative-date {
+    display: inline !important;
     font-size: $font-size-xs;
     color: var(--primary-medium);
   }
+}
+
+// Force metadata row to be horizontal
+.latest-topic-list-item .bottom-row,
+.latest-topic-list-item > div:last-child {
+  display: flex !important;
+  align-items: center;
+  gap: $space-sm;
+  width: 100%;
+  margin-top: $space-xs;
 }
 
 // Header alignment - all table headers on same line
