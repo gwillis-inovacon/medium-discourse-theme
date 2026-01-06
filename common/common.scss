@@ -867,8 +867,10 @@ tr.topic-list-item a.title {
   border-radius: $radius-lg;
   box-shadow: $shadow-lg;
   border: 1px solid var(--primary-low);
-  overflow: hidden;
+  overflow: visible;
   max-width: 360px;
+  min-height: auto;
+  height: auto;
 
   .card-content { padding: $space-lg; }
 
