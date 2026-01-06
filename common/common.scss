@@ -244,9 +244,10 @@ pre {
   padding-right: 130px; // Reserve space for thumbnail
   border-bottom: 1px solid var(--primary-low);
   min-height: 112px;
+  cursor: pointer;
 
   &:hover {
-    background: var(--secondary);
+    background: var(--secondary); // No color change on hover
   }
 
   // Reset all table cells

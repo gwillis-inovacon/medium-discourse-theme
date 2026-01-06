@@ -3,7 +3,24 @@ import { apiInitializer } from "discourse/lib/api";
 export default apiInitializer("0.11.1", (api) => {
   api.onPageChange(() => {
     document.querySelectorAll('.topic-list-item').forEach(item => {
-      // Skip if already processed
+      // Make entire card clickable
+      if (!item.dataset.cardClickable) {
+        item.dataset.cardClickable = 'true';
+        item.style.cursor = 'pointer';
+
+        item.addEventListener('click', (e) => {
+          // Don't navigate if clicking on an actual link or button
+          if (e.target.closest('a, button')) return;
+
+          // Find the topic title link and navigate
+          const titleLink = item.querySelector('a.title, .title a, a.raw-topic-link');
+          if (titleLink) {
+            titleLink.click();
+          }
+        });
+      }
+
+      // Skip author line processing if already done
       if (item.querySelector('.medium-author-line')) return;
 
       // Find the first avatar
