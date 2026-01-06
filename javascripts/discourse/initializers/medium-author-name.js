@@ -35,7 +35,7 @@ export default apiInitializer("0.11.1", (api) => {
         // Add " in " separator
         const separator = document.createElement('span');
         separator.className = 'medium-in-separator';
-        separator.textContent = ' in ';
+        separator.innerHTML = '&nbsp;in&nbsp;';
         authorLine.appendChild(separator);
 
         // Clone the category badge wrapper and add to author line

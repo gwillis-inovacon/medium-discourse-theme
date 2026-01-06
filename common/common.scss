@@ -350,7 +350,7 @@ tr.topic-list-item img.avatar,
   left: 44px !important;
   display: flex !important;
   align-items: center;
-  gap: 0;
+  gap: 4px;
   font-size: 14px;
   z-index: 100;
   white-space: nowrap;
@@ -363,6 +363,7 @@ tr.topic-list-item img.avatar,
 
 .topic-list-item .medium-in-separator {
   color: var(--primary-medium);
+  padding: 0 2px;
 }
 
 .topic-list-item .medium-category-name,
@@ -406,12 +407,17 @@ tr.topic-list-item img.avatar,
   padding-left: 16px !important;
 }
 
-// Link top line - hide the category here since we positioned it absolutely
+// Link top line - hide the category here since we show it in author line
 .topic-list-item .link-top-line {
   display: block !important;
 
-  .badge-wrapper {
-    display: none !important; // Hide duplicate, we show the absolute one
+  // Hide ALL category badges in link-top-line
+  .badge-wrapper,
+  .badge-category-wrapper,
+  .badge-category__wrapper,
+  [class*="badge-wrapper"],
+  [class*="badge-category"] {
+    display: none !important;
   }
 }
 
