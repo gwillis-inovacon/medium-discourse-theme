@@ -258,11 +258,23 @@ pre {
   }
 }
 
-// Override any other hover styles
+// Override any other hover styles - be very aggressive
 tr.topic-list-item:hover,
-.topic-list .topic-list-item:hover {
+.topic-list .topic-list-item:hover,
+.topic-list-item:hover,
+.topic-list-item:hover td,
+.topic-list-item:hover td.main-link,
+.topic-list-item:hover td.posters,
+.topic-list-item:hover td.num,
+.topic-list-item:hover > *,
+tr.topic-list-item:hover td,
+.topic-list tr:hover,
+.topic-list tr:hover td {
   background: var(--secondary) !important;
   background-color: var(--secondary) !important;
+}
+
+.topic-list-item:hover {
   border-bottom-color: var(--tertiary) !important;
 }
 
