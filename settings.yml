@@ -1,0 +1,34 @@
+medium_accent_color:
+  type: color
+  default: "#1a8917"
+  description: "Primary accent color (Medium green by default)"
+
+medium_use_serif_fonts:
+  type: bool
+  default: true
+  description: "Use serif fonts for content (Georgia/Charter)"
+
+medium_content_max_width:
+  type: string
+  default: "680px"
+  description: "Maximum width for content area"
+
+medium_show_topic_thumbnails:
+  type: bool
+  default: true
+  description: "Show thumbnail images on topic list when available"
+
+medium_card_style_topics:
+  type: bool
+  default: true
+  description: "Display topics as cards instead of traditional list"
+
+medium_hide_category_badges:
+  type: bool
+  default: false
+  description: "Hide category badges for cleaner look"
+
+medium_compact_navigation:
+  type: bool
+  default: true
+  description: "Use compact, Medium-style navigation"

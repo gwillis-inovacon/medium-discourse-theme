@@ -1,0 +1,35 @@
+{
+  "name": "Medium Style",
+  "about_url": null,
+  "license_url": "https://opensource.org/licenses/MIT",
+  "theme_version": "1.0.0",
+  "minimum_discourse_version": "2.7.0",
+  "authors": "Custom",
+  "component": false,
+  "color_schemes": {
+    "Medium Light": {
+      "primary": "242424",
+      "secondary": "ffffff",
+      "tertiary": "1a8917",
+      "quaternary": "1a8917",
+      "header_background": "ffffff",
+      "header_primary": "242424",
+      "highlight": "fff3d9",
+      "danger": "c94a4a",
+      "success": "1a8917",
+      "love": "c94a4a"
+    },
+    "Medium Dark": {
+      "primary": "e6e6e6",
+      "secondary": "121212",
+      "tertiary": "1a8917",
+      "quaternary": "1a8917",
+      "header_background": "1a1a1a",
+      "header_primary": "e6e6e6",
+      "highlight": "3d3d00",
+      "danger": "ff6b6b",
+      "success": "2ecc71",
+      "love": "ff6b6b"
+    }
+  }
+}

@@ -1,0 +1,289 @@
+// Medium-Style Mobile Styles
+// ==========================
+
+// Mobile-specific optimizations for smaller screens
+
+// Tighter spacing on mobile
+$mobile-space-md: 12px;
+$mobile-space-lg: 16px;
+
+// Header mobile
+.d-header {
+  height: 56px;
+
+  .wrap {
+    padding: 0 $mobile-space-md;
+  }
+
+  #site-logo {
+    max-height: 28px;
+  }
+}
+
+// Hide desktop-only elements
+.hide-mobile,
+.desktop-only {
+  display: none !important;
+}
+
+// Main outlet
+#main-outlet {
+  padding-top: $mobile-space-md;
+}
+
+// Wrap container mobile
+.wrap {
+  padding: 0 $mobile-space-md;
+}
+
+// Navigation mobile
+.nav-pills {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: $space-sm;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > li > a {
+    white-space: nowrap;
+    padding: $space-xs $space-sm;
+    font-size: $font-size-xs;
+  }
+}
+
+// Topic list mobile - full width cards
+.topic-list {
+  margin: 0 (-$mobile-space-md);
+
+  tbody {
+    gap: 0;
+  }
+}
+
+.topic-list-item {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--primary-low);
+  box-shadow: none;
+  padding: $mobile-space-lg $mobile-space-md;
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// Topic title mobile
+.topic-list-item .title,
+.topic-list .topic-title {
+  font-size: $font-size-md;
+}
+
+// Topic excerpt mobile
+.topic-excerpt {
+  font-size: $font-size-sm;
+  -webkit-line-clamp: 2;
+}
+
+// Hide thumbnail on small screens
+@media (max-width: 480px) {
+  .topic-list-item .topic-thumbnail {
+    display: none;
+  }
+}
+
+// Topic page mobile
+#topic-title {
+  margin: $mobile-space-lg 0;
+  padding: 0 $mobile-space-md;
+
+  h1 {
+    font-size: $font-size-xl;
+  }
+}
+
+// Post content mobile
+.topic-body {
+  padding: 0 $mobile-space-md;
+
+  .cooked {
+    font-size: $font-size-base;
+
+    p {
+      margin-bottom: $mobile-space-lg;
+    }
+  }
+}
+
+// Avatar sizes mobile
+.topic-avatar img.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+// Post actions mobile
+.post-menu-area {
+  padding: $mobile-space-md 0;
+
+  .actions {
+    justify-content: space-around;
+  }
+
+  .btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+// Reply control mobile
+#reply-control {
+  .d-editor-button-bar {
+    flex-wrap: wrap;
+  }
+
+  .submit-panel {
+    flex-direction: column;
+    gap: $space-sm;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// User card mobile - full width bottom sheet
+.user-card {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: none;
+  border-radius: $radius-lg $radius-lg 0 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+// Category list mobile
+.category-list {
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 0 (-$mobile-space-md);
+
+  .category {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    border-bottom: 1px solid var(--primary-low);
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+// Modals mobile - full screen
+.modal-inner-container {
+  border-radius: 0;
+  max-height: 100vh;
+  height: 100vh;
+  max-width: 100vw;
+}
+
+// Search mobile
+.search-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+}
+
+// Buttons mobile - larger touch targets
+.btn {
+  min-height: 44px;
+  padding: $space-sm $space-md;
+}
+
+// Form inputs mobile
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  font-size: 16px; // Prevent iOS zoom
+  padding: $space-md;
+}
+
+// Select kit mobile
+.select-kit-header {
+  min-height: 44px;
+}
+
+// Hamburger panel mobile
+.hamburger-panel .menu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: none;
+  border-radius: 0;
+}
+
+// Quick access panel mobile
+.quick-access-panel {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: none;
+  border-radius: 0;
+}
+
+// Sticky header on scroll
+.d-header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+// Safe area for notched phones
+@supports (padding-top: env(safe-area-inset-top)) {
+  .d-header {
+    padding-top: env(safe-area-inset-top);
+    height: calc(56px + env(safe-area-inset-top));
+  }
+
+  #reply-control {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .hamburger-panel .menu-panel,
+  .user-card {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+// Touch feedback
+@media (hover: none) {
+  .topic-list-item:active {
+    background: var(--primary-very-low);
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+}

@@ -1,0 +1,11 @@
+en:
+  theme_metadata:
+    description: "A clean, typography-focused theme inspired by Medium.com. Features serif fonts for content, card-based topic listings, and optimal reading experience."
+    settings:
+      medium_accent_color: "Accent Color"
+      medium_use_serif_fonts: "Use Serif Fonts"
+      medium_content_max_width: "Content Max Width"
+      medium_show_topic_thumbnails: "Show Topic Thumbnails"
+      medium_card_style_topics: "Card Style Topics"
+      medium_hide_category_badges: "Hide Category Badges"
+      medium_compact_navigation: "Compact Navigation"

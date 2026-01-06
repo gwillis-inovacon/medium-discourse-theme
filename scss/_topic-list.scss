@@ -1,0 +1,232 @@
+// Medium-Style Topic List
+// =======================
+
+// Main topic list container
+.topic-list-container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $space-lg;
+}
+
+// Topic list wrapper
+.topic-list {
+  border: none;
+
+  // Remove default table styling
+  &, thead, tbody, tr, th, td {
+    border: none;
+    background: transparent;
+  }
+
+  thead {
+    display: none; // Hide table headers for cleaner look
+  }
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+  }
+}
+
+// Individual topic row - Card style
+.topic-list-item {
+  display: block;
+  background: var(--secondary);
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  padding: $space-lg;
+  transition: all $transition-base;
+  border: 1px solid var(--primary-low);
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+    transform: translateY(-2px);
+  }
+
+  // Remove table cell display
+  td {
+    display: block;
+    padding: 0;
+  }
+}
+
+// Topic main cell
+.topic-list-data.main-link {
+  margin-bottom: $space-md;
+}
+
+// Topic title
+.topic-list .link-top-line {
+  margin-bottom: $space-sm;
+}
+
+.topic-list-item .title,
+.topic-list .topic-title {
+  font-family: $font-serif;
+  font-size: $font-size-xl;
+  font-weight: 700;
+  line-height: $line-height-tight;
+  color: var(--primary);
+  margin: 0;
+  display: block;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+// Topic excerpt/blurb
+.topic-excerpt {
+  font-family: $font-serif;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: var(--primary-high);
+  margin-top: $space-sm;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Topic metadata row
+.topic-list-item .topic-meta {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  margin-top: $space-md;
+}
+
+// Author info
+.topic-list-item .posters {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  order: -1;
+}
+
+.topic-list-item .posters a {
+  display: flex;
+  align-items: center;
+
+  &:first-child {
+    margin-right: $space-xs;
+  }
+
+  img.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: $radius-full;
+  }
+}
+
+// Category badge - subtle
+.badge-category-bg {
+  border-radius: $radius-sm;
+}
+
+.badge-category {
+  font-size: $font-size-xs;
+  font-weight: 500;
+  padding: 2px $space-sm;
+}
+
+// Topic stats
+.topic-list-item .num {
+  font-size: $font-size-sm;
+  color: var(--primary-medium);
+}
+
+.topic-list-item .views,
+.topic-list-item .posts {
+  font-size: $font-size-xs;
+  color: var(--primary-medium);
+
+  .number {
+    font-weight: 500;
+  }
+}
+
+// Activity/time
+.topic-list-item .relative-date {
+  font-size: $font-size-xs;
+  color: var(--primary-medium);
+}
+
+// Pinned indicator
+.topic-list-item .topic-statuses .pinned {
+  color: var(--tertiary);
+}
+
+// Featured image (if using topic thumbnails plugin or similar)
+.topic-list-item .topic-thumbnail {
+  float: right;
+  margin-left: $space-lg;
+  width: 150px;
+  height: 100px;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Latest topic list variation
+.latest-topic-list {
+  .latest-topic-list-item {
+    padding: $space-lg 0;
+    border-bottom: 1px solid var(--primary-low);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Categories page - card style
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $space-lg;
+
+  .category {
+    background: var(--secondary);
+    border-radius: $radius-md;
+    box-shadow: $shadow-card;
+    padding: $space-lg;
+    border: 1px solid var(--primary-low);
+    transition: all $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-card-hover;
+    }
+  }
+
+  // Hide default table structure
+  tbody {
+    display: contents;
+  }
+
+  tr {
+    display: contents;
+  }
+
+  td {
+    display: block;
+  }
+}
+
+// Empty state
+.no-topics-container {
+  text-align: center;
+  padding: $space-3xl;
+  color: var(--primary-medium);
+
+  h3 {
+    font-family: $font-serif;
+    margin-bottom: $space-md;
+  }
+}

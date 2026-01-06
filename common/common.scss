@@ -1,0 +1,257 @@
+// Medium-Style Discourse Theme
+// ============================
+// A clean, typography-focused theme inspired by Medium.com
+
+// Import partials
+@import "../scss/variables";
+@import "../scss/typography";
+@import "../scss/navigation";
+@import "../scss/topic-list";
+@import "../scss/topic-page";
+@import "../scss/buttons";
+@import "../scss/user-cards";
+
+// ===================
+// Global Base Styles
+// ===================
+
+// Body and page background
+html, body {
+  background: var(--secondary);
+}
+
+// Main container
+#main-outlet {
+  padding-top: $space-lg;
+}
+
+// Wrap container
+.wrap {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $space-lg;
+}
+
+// ===================
+// Layout Utilities
+// ===================
+
+// Content width constraint
+.topic-area,
+.list-container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+// Full width sections
+.full-width {
+  width: 100%;
+  max-width: none;
+}
+
+// ===================
+// Component Overrides
+// ===================
+
+// Select kit (dropdowns)
+.select-kit {
+  .select-kit-header {
+    border-radius: $radius-md;
+    border-color: var(--primary-low);
+
+    &:hover {
+      border-color: var(--primary-low-mid);
+    }
+  }
+
+  .select-kit-body {
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    border: 1px solid var(--primary-low);
+  }
+
+  .select-kit-row {
+    padding: $space-sm $space-md;
+
+    &:hover,
+    &.is-highlighted {
+      background: var(--primary-very-low);
+    }
+
+    &.is-selected {
+      background: var(--tertiary-low);
+    }
+  }
+}
+
+// Modals
+.modal-inner-container {
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--primary-low);
+  padding: $space-lg;
+}
+
+.modal-body {
+  padding: $space-lg;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--primary-low);
+  padding: $space-lg;
+}
+
+// Alerts
+.alert {
+  border-radius: $radius-md;
+  padding: $space-md $space-lg;
+  border: none;
+
+  &.alert-info {
+    background: var(--tertiary-low);
+    color: var(--tertiary);
+  }
+
+  &.alert-warning {
+    background: var(--highlight);
+    color: var(--primary);
+  }
+
+  &.alert-error {
+    background: var(--danger-low);
+    color: var(--danger);
+  }
+}
+
+// Badges
+.badge-wrapper {
+  font-size: $font-size-xs;
+}
+
+.badge-category {
+  padding: 3px $space-sm;
+  border-radius: $radius-sm;
+}
+
+// Tags
+.discourse-tag {
+  font-size: $font-size-xs;
+  padding: 2px $space-sm;
+  background: var(--primary-very-low);
+  border-radius: $radius-sm;
+  color: var(--primary-high);
+
+  &:hover {
+    background: var(--primary-low);
+    color: var(--primary);
+  }
+}
+
+// ===================
+// Forms
+// ===================
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+.select-kit-header {
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  padding: $space-sm $space-md;
+  border: 1px solid var(--primary-low);
+  border-radius: $radius-md;
+  background: var(--secondary);
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: var(--tertiary);
+    box-shadow: 0 0 0 3px var(--tertiary-low);
+  }
+}
+
+textarea {
+  min-height: 120px;
+  line-height: $line-height-relaxed;
+}
+
+// Composer
+.d-editor-textarea-wrapper {
+  border-radius: $radius-md;
+  border-color: var(--primary-low);
+}
+
+#reply-control {
+  .d-editor-textarea-wrapper {
+    &.is-focused {
+      border-color: var(--tertiary);
+      box-shadow: 0 0 0 3px var(--tertiary-low);
+    }
+  }
+}
+
+// ===================
+// Loading States
+// ===================
+
+.loading-container {
+  padding: $space-3xl;
+  text-align: center;
+}
+
+.spinner {
+  border-color: var(--primary-low);
+  border-top-color: var(--tertiary);
+}
+
+// ===================
+// Scrollbar Styling
+// ===================
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-very-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-low-mid);
+  border-radius: $radius-full;
+
+  &:hover {
+    background: var(--primary-medium);
+  }
+}
+
+// ===================
+// Transition Defaults
+// ===================
+
+a, button, .btn, input, textarea {
+  transition: all $transition-fast;
+}
+
+// ===================
+// Print Styles
+// ===================
+
+@media print {
+  .d-header,
+  .topic-footer-buttons,
+  .post-menu-area,
+  #reply-control {
+    display: none;
+  }
+
+  .topic-body .cooked {
+    font-size: 12pt;
+  }
+}

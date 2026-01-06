@@ -1,0 +1,186 @@
+// Medium-Style Desktop Styles
+// ===========================
+
+// Desktop-specific refinements for larger screens
+
+// Header adjustments
+.d-header {
+  .wrap {
+    padding: 0 $space-xl;
+  }
+
+  .contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// Navigation enhancements
+.d-header-icons {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+}
+
+// Sidebar (if enabled)
+.sidebar-wrapper {
+  width: 280px;
+  flex-shrink: 0;
+  padding-right: $space-xl;
+  border-right: 1px solid var(--primary-low);
+}
+
+.sidebar-section-link {
+  padding: $space-sm $space-md;
+  border-radius: $radius-md;
+  color: var(--primary-high);
+
+  &:hover {
+    background: var(--primary-very-low);
+    color: var(--primary);
+  }
+
+  &.active {
+    background: var(--primary-very-low);
+    color: var(--primary);
+    font-weight: 500;
+  }
+}
+
+// Main content with sidebar
+.with-sidebar {
+  display: flex;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.with-sidebar .main-content {
+  flex: 1;
+  min-width: 0;
+  padding-left: $space-xl;
+}
+
+// Topic list enhancements on desktop
+@media (min-width: $breakpoint-lg) {
+  .topic-list tbody {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+  }
+
+  .topic-list-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: $space-lg;
+
+    // If thumbnail present, include it in grid
+    &.has-thumbnail {
+      grid-template-columns: 1fr 150px;
+    }
+  }
+}
+
+// Topic page - optimal reading width on wide screens
+@media (min-width: $breakpoint-lg) {
+  #topic-title h1 {
+    font-size: 48px;
+  }
+
+  .topic-body .cooked {
+    font-size: $font-size-lg;
+  }
+}
+
+// User card positioning
+.user-card {
+  position: fixed;
+  z-index: 1000;
+}
+
+// Category page grid layout
+@media (min-width: $breakpoint-lg) {
+  .category-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Admin/staff sidebar panels
+.admin-contents {
+  display: flex;
+  gap: $space-xl;
+
+  .admin-nav {
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  .admin-detail {
+    flex: 1;
+  }
+}
+
+// Wide tables on desktop
+.directory-table {
+  th, td {
+    padding: $space-md;
+  }
+}
+
+// Keyboard shortcuts popup
+.keyboard-shortcuts-modal {
+  .modal-inner-container {
+    max-width: 700px;
+  }
+}
+
+// Search results - wider view
+.search-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// Notifications panel
+.quick-access-panel {
+  width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+// Hamburger menu panel
+.hamburger-panel .menu-panel {
+  width: 280px;
+}
+
+// Split view for editing
+.edit-topic {
+  display: flex;
+  gap: $space-xl;
+
+  .edit-area {
+    flex: 1;
+  }
+
+  .preview-area {
+    flex: 1;
+    border-left: 1px solid var(--primary-low);
+    padding-left: $space-xl;
+  }
+}
+
+// Hover effects only on desktop
+@media (hover: hover) {
+  .topic-list-item:hover {
+    box-shadow: $shadow-card-hover;
+    transform: translateY(-2px);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .user-card:hover .avatar {
+    transform: scale(1.05);
+  }
+}
