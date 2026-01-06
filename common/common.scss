@@ -687,6 +687,83 @@ tr.topic-list-item a.title {
   }
 }
 
+// Categories page - Latest topics column
+.categories-and-latest,
+.categories-and-top {
+  .latest-topic-list,
+  .top-topic-list {
+    .latest-topic-list-item {
+      display: block;
+      padding: $space-md;
+      margin-bottom: $space-sm;
+      border: 1px solid var(--primary-low);
+      border-radius: $radius-md;
+      background: var(--secondary);
+      cursor: pointer;
+      transition: border-color $transition-fast;
+
+      &:hover {
+        border-color: var(--tertiary);
+        background: var(--secondary) !important;
+      }
+
+      .topic-poster {
+        display: flex;
+        align-items: center;
+        gap: $space-sm;
+        margin-bottom: $space-xs;
+
+        img.avatar {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+        }
+      }
+
+      .topic-title {
+        font-family: $font-serif;
+        font-size: $font-size-md;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--primary);
+        margin-bottom: $space-xs;
+
+        a {
+          color: inherit;
+        }
+      }
+
+      .topic-category {
+        font-size: $font-size-sm;
+        color: var(--primary-medium);
+      }
+
+      .topic-stats {
+        display: flex;
+        align-items: center;
+        gap: $space-sm;
+        font-size: $font-size-sm;
+        color: var(--primary-medium);
+        margin-top: $space-xs;
+      }
+    }
+  }
+
+  // Header for Latest column
+  .category-list-latest-topic-header,
+  h3.latest-topic-list-header {
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-medium);
+    padding-bottom: $space-sm;
+    border-bottom: 2px solid var(--primary-low);
+    margin-bottom: $space-md;
+  }
+}
+
 // ===================
 // Topic Page
 // ===================
