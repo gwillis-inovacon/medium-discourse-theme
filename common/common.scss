@@ -797,28 +797,37 @@ tr.topic-list-item a.title {
 }
 
 // Header alignment - all table headers on same line
+.categories-and-latest thead,
+.categories-and-top thead,
+.category-list thead {
+  tr {
+    vertical-align: top !important;
+  }
+}
+
 .categories-and-latest th,
 .categories-and-top th,
 .category-list th,
 th.category,
 th.topics,
 th.latest {
-  vertical-align: baseline !important;
-  padding-top: 0 !important;
-  padding-bottom: $space-sm !important;
+  vertical-align: top !important;
+  padding: 0 0 $space-sm 0 !important;
+  margin: 0 !important;
   font-size: $font-size-sm;
   font-weight: 400;
   color: var(--primary-medium);
-  line-height: 1 !important;
+  line-height: 1.2 !important;
+  height: auto !important;
 }
 
-// Remove extra padding/margin from Latest header
-.latest-topic-list-header,
+// Latest column header specifically
 th.latest,
+.latest-topic-list-header,
 .category-list-latest-topic-header {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  line-height: 1 !important;
+  padding: 0 0 $space-sm 0 !important;
+  margin: 0 !important;
+  border: none !important;
 }
 
 // Hide reply count in latest cards, only show time
