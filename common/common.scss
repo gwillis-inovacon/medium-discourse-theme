@@ -343,34 +343,23 @@ tr.topic-list-item img.avatar,
   z-index: 100;
 }
 
-// Author line - "Username in Category" positioned next to avatar
-.topic-list-item .medium-author-line {
+// Author name - positioned next to avatar
+.topic-list-item .medium-author-name {
   position: absolute !important;
   top: 26px !important;
   left: 44px !important;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--primary);
   z-index: 100;
   white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
 
-.topic-list-item .medium-author-name {
-  color: var(--primary);
-  font-weight: 500;
-}
-
-.topic-list-item .medium-in-separator {
-  color: var(--primary-medium);
-  margin: 0 4px;
-}
-
-.topic-list-item .medium-category-name {
-  color: var(--primary);
-  font-weight: 400;
+  // Add "in" separator after username
+  &::after {
+    content: " in ";
+    color: var(--primary-medium);
+    font-weight: 400;
+  }
 }
 
 // Hide ALL avatars except one - cleaner approach
@@ -378,10 +367,20 @@ tr.topic-list-item img.avatar,
   display: none !important;
 }
 
-// Category - will be positioned dynamically after author name via JS
-// Keep it relatively positioned so it flows after the author name
+// Category badge - position in the author line after "Username in"
 .topic-list-item .badge-wrapper {
-  display: none !important; // Hide default, we'll show category differently
+  position: absolute !important;
+  top: 24px !important;
+  left: 140px !important; // After "Username in " - adjust based on typical name length
+  z-index: 100;
+  display: inline-flex !important;
+  align-items: center;
+  font-size: 14px;
+}
+
+// Hide duplicate category that appears elsewhere
+.topic-list-item .link-top-line .badge-wrapper:not(:first-of-type) {
+  display: none !important;
 }
 
 // Push main content down for avatar/category row
