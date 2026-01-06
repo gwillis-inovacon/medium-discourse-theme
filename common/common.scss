@@ -323,49 +323,58 @@ td.topic-thumbnail,
   gap: 0;
 }
 
-// Posters avatar - position at top left
-.topic-list-item .posters,
-.topic-list-item td.posters,
-.topic-list-item .topic-poster {
+// ANY avatar in topic list - position at top left
+.topic-list-item [class*="avatar"],
+.topic-list-item [class*="poster"],
+.topic-list-item .avatar,
+.topic-list-item img.avatar,
+.topic-list-item .avatar-flair {
   position: absolute !important;
-  display: block !important;
   top: $space-xl !important;
   left: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: $radius-full !important;
   z-index: 10;
-
-  // Show only first avatar, smaller
-  a {
-    display: none !important;
-
-    &:first-child {
-      display: inline-block !important;
-    }
-  }
-
-  img.avatar {
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: $radius-full !important;
-  }
+  font-size: 11px !important;
+  line-height: 20px !important;
+  text-align: center;
 }
 
-// Category - move to top, inline with avatar
+// Hide extra avatars (keep only first)
+.topic-list-item [class*="avatar"] ~ [class*="avatar"],
+.topic-list-item .avatar ~ .avatar {
+  display: none !important;
+}
+
+// Category - position at top, after avatar
 .topic-list-item .badge-category-wrapper,
-.topic-list-item .badge-wrapper {
+.topic-list-item .badge-wrapper,
+.topic-list-item [class*="category"] {
   position: absolute !important;
   top: $space-xl !important;
   left: 28px !important;
   z-index: 10;
 }
 
-// Push main content down to make room for avatar/category row
-.topic-list-item td.main-link {
-  padding-top: 28px !important;
+// Don't reposition category inside title link
+.topic-list-item a.title [class*="category"],
+.topic-list-item .link-top-line .badge-category-wrapper {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
 }
 
-// Link top line - remove default positioning
+// Push main content down for avatar/category row
+.topic-list-item td.main-link,
+.topic-list-item .main-link {
+  padding-top: 32px !important;
+}
+
+// Title should come first in the content flow
 .topic-list-item .link-top-line {
-  display: contents;
+  display: block !important;
+  margin-bottom: $space-xs;
 }
 
 // Category badge - subtle inline style
@@ -418,9 +427,11 @@ td.topic-thumbnail,
   overflow: hidden;
 }
 
-// Bottom metadata row - single line
+// Bottom metadata row - force single line
 .topic-list-item .link-bottom-line,
-.topic-list-item .topic-item-stats-wrapper {
+.topic-list-item .topic-item-stats-wrapper,
+.topic-list-item [class*="stats"],
+.topic-list-item [class*="meta"] {
   display: flex !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
@@ -429,12 +440,26 @@ td.topic-thumbnail,
   font-size: $font-size-sm;
   color: var(--primary-medium);
 
-  // Force all children inline
-  > * {
+  // Force ALL children inline on same row
+  > *,
+  > span,
+  > div,
+  > a {
     display: inline-flex !important;
     align-items: center;
     flex-shrink: 0;
+    white-space: nowrap;
   }
+}
+
+// Any element that looks like time/date - keep inline
+.topic-list-item [class*="time"],
+.topic-list-item [class*="date"],
+.topic-list-item [class*="activity"],
+.topic-list-item [class*="ago"],
+.topic-list-item .relative-date {
+  display: inline-flex !important;
+  white-space: nowrap;
 }
 
 // All metadata items inline
