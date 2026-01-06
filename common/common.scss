@@ -258,20 +258,23 @@ pre {
   }
 }
 
-// Override any other hover styles - be very aggressive
-tr.topic-list-item:hover,
-.topic-list .topic-list-item:hover,
+// Override any other hover styles - nuclear option
 .topic-list-item:hover,
-.topic-list-item:hover td,
-.topic-list-item:hover td.main-link,
-.topic-list-item:hover td.posters,
-.topic-list-item:hover td.num,
-.topic-list-item:hover > *,
-tr.topic-list-item:hover td,
-.topic-list tr:hover,
-.topic-list tr:hover td {
+.topic-list-item:hover *,
+.topic-list tbody tr:hover,
+.topic-list tbody tr:hover td,
+.topic-list tbody tr:hover td *,
+table.topic-list tr:hover,
+table.topic-list tr:hover td {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+// Set the actual background on the row itself
+.topic-list-item,
+.topic-list-item:hover {
   background: var(--secondary) !important;
-  background-color: var(--secondary) !important;
+  border-bottom-color: var(--tertiary);
 }
 
 .topic-list-item:hover {
