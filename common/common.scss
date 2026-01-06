@@ -368,19 +368,19 @@ tr.topic-list-item img.avatar,
 }
 
 // Category badge - position in the author line after "Username in"
-.topic-list-item .badge-wrapper {
+// Try multiple selectors to catch the category
+.topic-list-item .badge-wrapper,
+.topic-list-item .badge-category-wrapper,
+.topic-list-item .badge-wrapper.bullet,
+.topic-list-item .badge-wrapper.box,
+tr.topic-list-item .badge-wrapper {
   position: absolute !important;
   top: 24px !important;
-  left: 140px !important; // After "Username in " - adjust based on typical name length
+  left: 140px !important;
   z-index: 100;
   display: inline-flex !important;
   align-items: center;
   font-size: 14px;
-}
-
-// Hide duplicate category that appears elsewhere
-.topic-list-item .link-top-line .badge-wrapper:not(:first-of-type) {
-  display: none !important;
 }
 
 // Push main content down for avatar/category row
