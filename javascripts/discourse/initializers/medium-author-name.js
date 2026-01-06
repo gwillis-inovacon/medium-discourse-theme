@@ -63,22 +63,6 @@ export default apiInitializer("0.11.1", (api) => {
         }
       }
 
-      // Fix metadata: move activity/time to same line as stats
-      // Find the stats container (contains views/replies icons)
-      const statsContainer = item.querySelector('.topic-item-stats, [class*="topic-item-stats"]');
-      const relativeDate = item.querySelector('.relative-date');
-      const timeLink = relativeDate ? relativeDate.closest('a') : null;
-
-      if (statsContainer && timeLink && !statsContainer.contains(timeLink)) {
-        // Time link is outside stats, move it in
-        const timeClone = timeLink.cloneNode(true);
-        timeClone.style.display = 'inline-flex';
-        timeClone.style.alignItems = 'center';
-        timeClone.style.gap = '4px';
-        timeClone.classList.add('medium-time-inline');
-        statsContainer.appendChild(timeClone);
-        timeLink.style.display = 'none';
-      }
     });
   });
 });
