@@ -323,37 +323,49 @@ td.topic-thumbnail,
   gap: 0;
 }
 
-// Posters - show at top with category
-.topic-list-item td.posters {
+// Posters avatar - position at top left
+.topic-list-item .posters,
+.topic-list-item td.posters,
+.topic-list-item .topic-poster {
+  position: absolute !important;
   display: block !important;
-  position: absolute;
-  top: $space-xl;
-  left: 0;
+  top: $space-xl !important;
+  left: 0 !important;
+  z-index: 10;
 
-  // Show only first avatar
+  // Show only first avatar, smaller
   a {
-    display: none;
+    display: none !important;
 
     &:first-child {
-      display: inline-flex;
-      align-items: center;
-
-      img.avatar {
-        width: 20px;
-        height: 20px;
-        border-radius: $radius-full;
-      }
+      display: inline-block !important;
     }
+  }
+
+  img.avatar {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: $radius-full !important;
   }
 }
 
-// Category line - at top
+// Category - move to top, inline with avatar
+.topic-list-item .badge-category-wrapper,
+.topic-list-item .badge-wrapper {
+  position: absolute !important;
+  top: $space-xl !important;
+  left: 28px !important;
+  z-index: 10;
+}
+
+// Push main content down to make room for avatar/category row
+.topic-list-item td.main-link {
+  padding-top: 28px !important;
+}
+
+// Link top line - remove default positioning
 .topic-list-item .link-top-line {
-  display: flex;
-  align-items: center;
-  gap: $space-sm;
-  margin-bottom: $space-sm;
-  padding-left: 28px; // Space for avatar
+  display: contents;
 }
 
 // Category badge - subtle inline style
@@ -407,13 +419,22 @@ td.topic-thumbnail,
 }
 
 // Bottom metadata row - single line
-.topic-list-item .link-bottom-line {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
+.topic-list-item .link-bottom-line,
+.topic-list-item .topic-item-stats-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
   gap: $space-sm;
   font-size: $font-size-sm;
   color: var(--primary-medium);
+
+  // Force all children inline
+  > * {
+    display: inline-flex !important;
+    align-items: center;
+    flex-shrink: 0;
+  }
 }
 
 // All metadata items inline
