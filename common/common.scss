@@ -460,7 +460,7 @@ tr.topic-list-item a.title {
   line-height: 1.3 !important;
   color: var(--primary) !important;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   -webkit-font-smoothing: antialiased;
 
   &:hover { color: var(--primary) !important; }
@@ -487,9 +487,10 @@ tr.topic-list-item a.title {
   align-items: center !important;
   flex-wrap: nowrap !important;
   flex-direction: row !important;
-  gap: 16px !important;
+  gap: 12px !important;
   font-size: $font-size-sm;
   color: var(--primary-medium);
+  margin-top: 4px;
 
   // Force ALL children inline on same row
   > *,
@@ -501,6 +502,12 @@ tr.topic-list-item a.title {
     flex-shrink: 0;
     white-space: nowrap;
     gap: 4px;
+    line-height: 1;
+  }
+
+  // Ensure icons align with text
+  .d-icon {
+    vertical-align: middle;
   }
 }
 
@@ -514,15 +521,16 @@ tr.topic-list-item a.title {
   margin-right: 8px !important;
 }
 
-// Any element that looks like time/date - keep inline with left margin
+// Any element that looks like time/date - keep inline
 .topic-list-item [class*="time"],
 .topic-list-item [class*="date"],
 .topic-list-item [class*="activity"],
 .topic-list-item [class*="ago"],
 .topic-list-item .relative-date {
   display: inline-flex !important;
+  align-items: center !important;
   white-space: nowrap;
-  margin-left: 8px !important;
+  gap: 4px;
 }
 
 // All metadata items inline
