@@ -803,12 +803,13 @@ tr.topic-list-item a.title {
 th.category,
 th.topics,
 th.latest {
-  vertical-align: top !important;
+  vertical-align: baseline !important;
   padding-top: 0 !important;
   padding-bottom: $space-sm !important;
   font-size: $font-size-sm;
   font-weight: 400;
   color: var(--primary-medium);
+  line-height: 1 !important;
 }
 
 // Remove extra padding/margin from Latest header
@@ -817,6 +818,14 @@ th.latest,
 .category-list-latest-topic-header {
   padding-top: 0 !important;
   margin-top: 0 !important;
+  line-height: 1 !important;
+}
+
+// Hide reply count in latest cards, only show time
+.latest-topic-list-item .num.posts,
+.latest-topic-list-item .posts-map,
+.latest-topic-list-item .num:not(.age) {
+  display: none !important;
 }
 
 // ===================
