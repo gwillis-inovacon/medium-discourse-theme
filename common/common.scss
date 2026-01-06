@@ -237,14 +237,13 @@ pre {
 
 // Individual topic row - Medium card style
 .topic-list-item {
-  display: flex !important;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: $space-lg;
+  display: block !important;
+  position: relative;
   background: var(--secondary);
   padding: $space-xl 0;
+  padding-right: 130px; // Reserve space for thumbnail
   border-bottom: 1px solid var(--primary-low);
-  border: none;
+  min-height: 112px;
 
   &:hover {
     background: var(--secondary);
@@ -256,24 +255,12 @@ pre {
     padding: 0;
     border: none;
     background: none;
-    vertical-align: top;
   }
 
-  // Main content area - takes remaining space
+  // Main content area
   > td.main-link {
     display: block !important;
-    flex: 1;
-    min-width: 0;
     padding: 0;
-  }
-
-  // Thumbnail - fixed width on right
-  > td.topic-thumbnail {
-    display: block !important;
-    flex-shrink: 0;
-    padding: 0 !important;
-    width: 112px !important;
-    order: 2;
   }
 
   // Posters (avatars) - hide for now
@@ -283,9 +270,50 @@ pre {
 
   // Hide other cells
   > td.num,
-  > td.activity {
+  > td.activity,
+  > td.topic-thumbnail {
     display: none !important;
   }
+}
+
+// Thumbnail - absolutely positioned on right
+// Target all possible thumbnail containers
+.topic-list-item .topic-thumbnail,
+.topic-list-item .thumbnail,
+.topic-list-item img.thumbnail,
+.topic-list-item .topic-list-thumbnail,
+.topic-list-item td.topic-thumbnail,
+td.topic-thumbnail,
+.main-link .topic-thumbnail {
+  position: absolute !important;
+  top: $space-xl;
+  right: 0;
+  width: 112px !important;
+  height: 112px !important;
+  min-width: 112px;
+  max-width: 112px;
+  min-height: 112px;
+  max-height: 112px;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  display: block !important;
+
+  img {
+    width: 112px !important;
+    height: 112px !important;
+    object-fit: cover;
+    border-radius: $radius-sm;
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+}
+
+// When no thumbnail, remove right padding
+.topic-list-item:not(:has(.topic-thumbnail img)):not(:has(img.thumbnail)) {
+  padding-right: 0;
 }
 
 // Main link content structure
