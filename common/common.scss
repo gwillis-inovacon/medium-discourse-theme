@@ -407,18 +407,24 @@ tr.topic-list-item img.avatar,
   padding-left: 16px !important;
 }
 
-// Link top line - hide the category here since we show it in author line
+// Link top line
 .topic-list-item .link-top-line {
   display: block !important;
+}
 
-  // Hide ALL category badges in link-top-line
-  .badge-wrapper,
-  .badge-category-wrapper,
-  .badge-category__wrapper,
-  [class*="badge-wrapper"],
-  [class*="badge-category"] {
-    display: none !important;
-  }
+// Hide ALL category badges in topic list EXCEPT in our author line
+.topic-list-item .badge-wrapper,
+.topic-list-item .badge-category-wrapper,
+.topic-list-item .badge-category__wrapper,
+.topic-list-item [class*="badge-wrapper"]:not(.medium-category-inline),
+.topic-list-item [class*="badge-category"]:not(.medium-category-inline) {
+  display: none !important;
+}
+
+// But show badges inside our author line
+.topic-list-item .medium-author-line .badge-wrapper,
+.topic-list-item .medium-author-line [class*="badge"] {
+  display: inline-flex !important;
 }
 
 // Category badge - subtle inline style
