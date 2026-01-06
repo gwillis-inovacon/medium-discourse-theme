@@ -226,26 +226,25 @@ pre {
 .topic-list {
   border: none;
   width: 100%;
-  border-collapse: collapse;
+  display: block;
 
   thead { display: none; }
 
-  &, thead, tbody, tr, th, td {
-    border: none;
-    background: transparent;
+  tbody {
+    display: block;
   }
 }
 
 // Individual topic row - Medium card style
 .topic-list-item {
-  display: grid !important;
-  grid-template-columns: 1fr 130px;
-  grid-template-rows: auto;
-  gap: $space-md;
-  align-items: start;
+  display: flex !important;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $space-lg;
   background: var(--secondary);
   padding: $space-xl 0;
   border-bottom: 1px solid var(--primary-low);
+  border: none;
 
   &:hover {
     background: var(--secondary);
@@ -253,38 +252,40 @@ pre {
 
   // Reset all table cells
   > td {
-    display: none !important;
+    display: none;
     padding: 0;
     border: none;
     background: none;
+    vertical-align: top;
   }
 
-  // Main content area - left column
+  // Main content area - takes remaining space
   > td.main-link {
     display: block !important;
-    grid-column: 1;
-    grid-row: 1;
+    flex: 1;
+    min-width: 0;
     padding: 0;
   }
 
-  // Thumbnail - right column
+  // Thumbnail - fixed width on right
   > td.topic-thumbnail {
     display: block !important;
-    grid-column: 2;
-    grid-row: 1;
+    flex-shrink: 0;
     padding: 0 !important;
-    width: auto !important;
+    width: 112px !important;
+    order: 2;
   }
 
-  // Posters (avatars) - show inline with metadata
+  // Posters (avatars) - hide for now
   > td.posters {
     display: none !important;
   }
-}
 
-// When no thumbnail, let content span full width
-.topic-list-item:not(:has(td.topic-thumbnail img)) {
-  grid-template-columns: 1fr;
+  // Hide other cells
+  > td.num,
+  > td.activity {
+    display: none !important;
+  }
 }
 
 // Main link content structure
