@@ -348,34 +348,26 @@ tr.topic-list-item img.avatar,
   display: none !important;
 }
 
-// Category - position at top, after avatar
-.topic-list-item .badge-category-wrapper,
+// Category - position at top, next to avatar
 .topic-list-item .badge-wrapper,
-.topic-list-item [class*="category"] {
-  position: absolute !important;
-  top: $space-xl !important;
-  left: 28px !important;
-  z-index: 10;
-}
-
-// Don't reposition category inside title link
-.topic-list-item a.title [class*="category"],
 .topic-list-item .link-top-line .badge-category-wrapper {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
+  position: absolute !important;
+  top: 32px !important;
+  left: 28px !important;
+  z-index: 100;
+  display: inline-flex !important;
+  align-items: center;
 }
 
 // Push main content down for avatar/category row
 .topic-list-item td.main-link,
 .topic-list-item .main-link {
-  padding-top: 32px !important;
+  padding-top: 36px !important;
 }
 
-// Title should come first in the content flow
+// Link top line - let it flow naturally after the absolute positioned items
 .topic-list-item .link-top-line {
   display: block !important;
-  margin-bottom: $space-xs;
 }
 
 // Category badge - subtle inline style
@@ -403,16 +395,18 @@ tr.topic-list-item img.avatar,
 .topic-list-item .title,
 .topic-list-item .link-top-line a.title,
 .topic-list-item a.title,
-.topic-list-item .raw-topic-link {
-  font-family: $font-serif;
-  font-size: 22px;
+.topic-list-item .raw-topic-link,
+tr.topic-list-item a.title {
+  font-family: $font-serif !important;
+  font-size: 20px !important;
   font-weight: 700 !important;
-  line-height: 1.25;
-  color: var(--primary);
+  line-height: 1.3 !important;
+  color: var(--primary) !important;
   display: block;
-  margin-bottom: $space-xs;
+  margin-bottom: $space-sm;
+  -webkit-font-smoothing: antialiased;
 
-  &:hover { color: var(--primary); }
+  &:hover { color: var(--primary) !important; }
 }
 
 // Topic excerpt
